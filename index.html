@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="hide">
+
+    <!-- Header and calendar content wrapper -->
+    <section class="header-and-content">
+
+      <!-- Top header -->
+      <header class="main-header">
+        <!-- Sidebar toggle button -->
+        <div class="sidebar-toggle-button"></div>
+
+        <div class="button-container">
+          <!-- Month button -->
+          <div class="main-header-button-wrapper">
+            <button class="main-header-button month-button">month</button>
+            <span class="divide"></span>
+          </div>
+          <!-- Year button -->
+          <div class="main-header-button-wrapper">
+            <button class="main-header-button year-button">year</button>
+            <span class="divide"></span>
+          </div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="search-form-wrapper">
+          <span class="search-icon"></span>
+          <input type="text" placeholder="Search" class="search-form">
+          <span class="close-search-button"></span>
+        </div>
+
+      </header> <!-- End top header -->
+
+
+      <!-- Main section -->
+      <div class="main-section">
+
+        <!-- Loading container -->
+        <div class="loading-container">
+          <div class="loading-icon"></div>
+        </div>
+
+        <!-- Calendar contents -->
+        <div class="calendar-contents">
+
+          <!-- Bottom header -->
+          <header class="sub-header">
+            <!-- Year header content -->
+            <div class="year-header-content">
+              <div class="date-details">
+                <h1 class="date-heading"></h1>
+              </div>
+              <div class="header-buttons">
+                <button class="navigation-button prev-button previous-year-btn"></button>
+                <button class="navigation-button today-button today-btn-year">today</button>
+                <button class="navigation-button next-button next-year-btn"></button>
+              </div>
+            </div>
+            <!-- Month header content -->
+            <div class="month-header-content">
+              <div class="date-heading"></div>
+              <div class="header-buttons">
+                <button class="navigation-button prev-button previous-month-btn"></button>
+                <button class="navigation-button today-button today-btn-month">today</button>
+                <button class="navigation-button next-button next-month-btn"></button>
+              </div>
+            </div>
+          </header> <!-- End bottom header -->
+
+          <!-- Main content -->
+          <main class="calendar-class-content">
+
+            <!-- Year calendar -->
+            <section class="year-calendar">
+              <!-- Calendar content -->
+              <div class="calendar-wrapper year-view"></div>
+                <!-- Calendar template -->
+                <template class="calendar-month-template">
+                  <div class="calendar-month">
+                    <span class="month-title"></span>
+                    <div class="day-names">
+                      <div class="day">M</div>
+                      <div class="day">T</div>
+                      <div class="day">W</div>
+                      <div class="day">T</div>
+                      <div class="day">F</div>
+                      <div class="day">S</div>
+                      <div class="day">S</div>
+                    </div>
+                    <div class="year-dates"></div>
+                  </div>
+                </template>
+            </section>
+
+            <!-- Month calendar -->
+            <section class="month-calendar">
+              <!-- Calendar content -->
+              <div class="calendar-wrapper month-view">
+                <div class="day-names">
+                  <div class="day">Mon</div>
+                  <div class="day">Tue</div>
+                  <div class="day">Wed</div>
+                  <div class="day">Thu</div>
+                  <div class="day">Fri</div>
+                  <div class="day">Sat</div>
+                  <div class="day">Sun</div>
+                </div>
+                <div class="month-dates-scroll-container">
+                  <div class="month-dates"></div>
+                </div>
+              </div>
+            </section>
+
+          </main> <!-- End main content -->
+
+          <!-- Details element placeholder -->
+          <div class="details-element-placeholder"></div>
+
+        </div>
+
+        <!-- Search results container -->
+        <aside class="search-results"></aside>
+      </div>
+
+    </section> <!-- End main content -->
+
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <!-- Calendar categories -->
+      <div class="calendar-categories">
+
+        <div class="user-event-category-wrapper">
+          <!-- Calendar heading Container -->
+          <div class="calendar-heading-container">
+            <span class="calendar-categories-heading">Event Calendars</span>
+            <span class="new-calendar-button">+</span>
+          </div>
+
+          <!-- User-added category container -->
+          <div class="user-added-category-container"></div>
+        </div>
+
+        <div class="api-event-category-wrapper">
+           <!-- Calendar heading Container -->
+           <div class="calendar-heading-container">
+            <span class="calendar-categories-heading">Other</span>
+          </div>
+          <!-- API Category container -->
+          <div class="api-category-container"></div> 
+        </div>
+
+
+        <!-- Event category -->
+        <template class="calendar-category-template">
+          <div class="calendar-category-wrapper">
+            <div class="calendar-category">
+              <div class="tickbox"></div>
+              <input class="category-name-input" placeholder="Untitled"/>
+              <span class="calendar-category-name"></span>
+              <div class="settings-button">
+                <span class="dot-icon"></span>
+                <span class="dot-icon"></span>
+                <span class="dot-icon"></span>
+              </div>
+            </div>
+            <!-- Calendar category settings -->
+            <div class="calendar-category-settings">
+              <span class="delete-category-button">Delete</span>
+              <span class="button-divide"></span>
+              <span class="rename-category-button">Rename</span>
+              <span class="button-divide"></span>
+              <div class="color-icon-container"></div>
+            </div>
+          </div>
+        </template>
+
+      </div> <!-- End calendar categories -->      
+
+      <!-- Sidebar widget calendar -->
+      <div class="sidebar-widget-calendar"></div>
+
+    </aside> <!-- End sidebar -->    
+
+
+    <!-- Delete category warning message -->
+    <div class="full-page-overlay">
+      <div class="warning-message-container">
+        <h4 class="warning-heading"></h4>
+        <p class="warning-message">
+          If you delete this calendar, all events associated with the calendar will also be deleted.
+        </p>
+        <div class="warning-button-wrapper">
+          <span class="confirm-button">Delete</span>
+          <span class="cancel-button">Cancel</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Event details form template -->
+    <template class="calendar-event-details-template">
+      <div class="details-inner-container">
+
+        <!-- Event details form top section -->
+        <form class="calendar-event-details-form-top">
+          <input class="event-name" placeholder="New Event"/>
+
+          <!-- Button menu -->
+          <div class="menu-button-wrapper">
+
+            <div class="category-menu-button">
+              <span class="category-color-icon"></span>
+              <span class="arrow-icons"></span>
+              <div class="category-menu-element-container"></div>
+            </div>
+
+            <!-- Delete event button -->
+            <div class="delete-event-button"></div>
+          </div>
+
+          <input class="event-location" placeholder="Add Location"/>
+        </form>
+
+        <!-- Date & time details container -->
+        <div class="date-and-time-details-container">
+
+          <!-- Date & time summary -->
+          <div class="date-and-time-summary show">
+            <div class="summary-date-string"></div>
+          </div>
+
+          <!-- Date & time details -->
+          <div class="date-and-time-details">
+            
+            <!-- All day event select -->
+            <div class="all-day-row">
+              <div class="column-one all-day-label">all-day:</div>
+              <div class="column-two event-time">
+                <span class="tickbox"></span>
+              </div>
+            </div>
+
+            <!-- Start date & time-->
+            <div class="start-date-row">
+              <div class="column-one start-date-label">starts:</div>
+
+              <!-- Start date container -->
+              <div class="column-two start-date-container">
+                <div class="start-date-string-wrapper">
+                  <div class="start-date-string">
+                    <input class="date-string-input start-date date-input" maxlength="2"/>
+                    /
+                    <input class="date-string-input start-month month-input" maxlength="2"/>
+                    /
+                    <input class="date-string-input start-year year-input" maxlength="4"/>
+                  </div>
+                  <div class="start-date-calendar-container"></div>
+                </div>
+              </div>
+              <!-- Start time column -->
+              <div class="column-three event-time">
+                <div class="time-container start-time-string">
+                  <input class="start-time time-input hour-input" maxlength="2"/>
+                  :
+                  <input class="start-time time-input minute-input" maxlength="2"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- End date -->
+            <div class="end-date-row">
+              <div class="column-one end-date-label">ends:</div>
+              <!-- End date container -->
+              <div class="column-two end-date-container">
+                <div class="end-date-string-wrapper">
+                  <div class="end-date-string">
+                    <input class="date-string-input end-date date-input" maxlength="2"/>
+                    /
+                    <input class="date-string-input end-month month-input" maxlength="2"/>
+                    /
+                    <input class="date-string-input end-year year-input" maxlength="4"/>
+                  </div>
+                  <div class="end-date-calendar-container"></div>
+                </div>
+              </div>
+
+              <!-- End time column -->
+              <div class="column-three event-time">
+                <div class="time-container end-time-string">
+                  <input class="end-time time-input hour-input" maxlength="2"/>
+                  :
+                  <input class="end-time time-input minute-input" maxlength="2"/>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- End date & time details -->
+
+        </div> <!-- End date & time details container -->
+
+        <!-- Event details form bottom section -->
+        <form class="calendar-event-details-form-bottom">
+          <input class="event-invitees" placeholder="Add Invitees"/>
+          <input class="event-notes" placeholder="Add Notes"/>
+        </form>
+
+        <!-- Arrow container -->
+        <div class="arrow-container"></div>
+      </div>
+      
+    </template>
+
+
+    <!-- Widget calendar template -->
+    <template class="widget-calendar-template">
+      <div class="widget-calendar">
+        <!-- Widget calendar header -->
+        <header class="widget-calendar-header">
+          <span class="widget-date-heading"></span>
+          <div class="calendar-buttons">
+            <span class="widget-button widget-previous-month-btn"></span>
+            <span class="widget-button widget-today-btn-month"></span>
+            <span class="widget-button widget-next-month-btn"></span>
+          </div>
+        </header>
+        <!-- Day names -->
+        <div class="day-names">
+          <div class="day">Mo</div>
+          <div class="day">Tu</div>
+          <div class="day">We</div>
+          <div class="day">Th</div>
+          <div class="day">Fr</div>
+          <div class="day">Sa</div>
+          <div class="day">Su</div>
+        </div>
+        <!-- Dates in month -->
+        <div class="widget-month-dates"></div>
+      </div>
+    </template>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
