@@ -53,10 +53,13 @@ function getIsoCode(reverseLocation) {
 
 // Uses Google reverse geocoding to get current address from longitude and latitude
 const getReverseLocation = async (latitude, longitude) => {
-  const reverseUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyCw4aEYycoizXZXZ7jdF_AhdKbVYLlbn1M`;
-  return await fetchAPIData(reverseUrl);
-}
-
+  const response = await fetch('/.netlify/functions/reverse-geocode', {
+    method: "POST",
+    body: JSON.stringify({ latitude, longitude }),
+  });
+  const data = await response.json();
+  return data;
+};
 
 
 // ===============================================
@@ -66,29 +69,12 @@ const getReverseLocation = async (latitude, longitude) => {
 // Gets API url and passes into fetchAPIData function.
 
 async function getCalendarAPIData(country, year) {
-  const url = `https://calendarific.com/api/v2/holidays?&api_key=6WkpgqIZIO9b0u57DOMinMuUWko6EmEl&country=${country}&year=${year}`;
-  return fetchAPIData(url);
-}
-
-
-
-// ===============================================
-//  Fetch API Data
-// ===============================================
-
-// Takes API url and returns information if found.
-
-const fetchAPIData = async (url) => {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
-  } catch(error) {
-    console.error(error);
-  }
+  const response = await fetch('/.netlify/functions/holidays', {
+    method: "POST",
+    body: JSON.stringify({ country, year }),
+  });
+  const data = await response.json();
+  return data;
 }
 
 
