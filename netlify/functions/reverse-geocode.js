@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 
 exports.handler = async function(event) {
+  console.log('handler function called');
+  
   const { latitude, longitude } = JSON.parse(event.body);
   const apiKey = process.env.GOOGLE_API_KEY;
 

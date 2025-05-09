@@ -198,6 +198,7 @@ function getFromLocalStorage(key) {
 // Stores the retrieved data in localStorage.
 
 async function checkInLocalStorage(year, countryCode) {
+  console.log(year, countryCode);
   let data;
   // Check if data is in local storage
   localStorage.getItem(year)
