@@ -53,15 +53,19 @@ function getIsoCode(reverseLocation) {
 
 // Uses Google reverse geocoding to get current address from longitude and latitude
 const getReverseLocation = async (latitude, longitude) => {
-  console.log('getReverseLocation');
+  console.log('getReverseLocation called');
+  
   const response = await fetch('/.netlify/functions/reverse-geocode', {
     method: "POST",
-    body: JSON.stringify({ latitude, longitude }),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ latitude, longitude })
   });
+
   const data = await response.json();
   return data;
-};
-
+}
 
 // ===============================================
 //  Get Calendar URL
