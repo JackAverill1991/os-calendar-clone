@@ -52,9 +52,9 @@ function getIsoCode(reverseLocation) {
 
 
 // Uses Google reverse geocoding to get current address from longitude and latitude
-const getReverseLocation = async (latitude, longitude) => {
-  console.log('getReverseLocation called');
-  
+// Calls handler function in Netlify where API keys are stored
+
+const getReverseLocation = async (latitude, longitude) => {  
   const response = await fetch('/.netlify/functions/reverse-geocode', {
     method: "POST",
     headers: {
@@ -67,16 +67,20 @@ const getReverseLocation = async (latitude, longitude) => {
   return data;
 }
 
+
 // ===============================================
 //  Get Calendar URL
 // ===============================================
 
-// Gets API url and passes into fetchAPIData function.
+// Gets API url and passes into fetchAPIData function
+// Calls handler function in Netlify where API keys are stored
 
 async function getCalendarAPIData(country, year) {
-  console.log('getCalendarAPIData');
   const response = await fetch('/.netlify/functions/holidays', {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({ country, year }),
   });
   const data = await response.json();

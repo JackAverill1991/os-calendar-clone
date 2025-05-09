@@ -1,10 +1,14 @@
 exports.handler = async function(event) {
-  console.log('handler function called 16:07');
+  // Import fetch from Node.js
   const fetch = (await import('node-fetch')).default;
   
+  // Get latitude and longitude
   const { latitude, longitude } = JSON.parse(event.body);
+
+  // Get API key from .env file
   const apiKey = process.env.GOOGLE_API_KEY;
 
+  // Pass latitude, longitude and API key into Google URL 
   const reverseUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
   try {
