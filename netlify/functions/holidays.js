@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
-
 exports.handler = async function(event) {
+  const fetch = (await import('node-fetch')).default;
+
   const { country, year } = JSON.parse(event.body);
   const calendarKey = process.env.CALENDARIFIC_API_KEY;
 
