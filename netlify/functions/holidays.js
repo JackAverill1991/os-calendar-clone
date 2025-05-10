@@ -1,7 +1,4 @@
 exports.handler = async function(event) {
-  // Import fetch from Node.js
-  const fetch = (await import('node-fetch')).default;
-
   // Get country and year data
   const { country, year } = JSON.parse(event.body);
 

@@ -1,7 +1,4 @@
-exports.handler = async function(event) {
-  // Import fetch from Node.js
-  const fetch = (await import('node-fetch')).default;
-  
+exports.handler = async function(event) {  
   // Get latitude and longitude
   const { latitude, longitude } = JSON.parse(event.body);
 
@@ -17,11 +14,11 @@ exports.handler = async function(event) {
     return {
       statusCode: 200,
       body: JSON.stringify(data),
-    };
+    }
   } catch (error) {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
-    };
+    }
   }
-};
+}
